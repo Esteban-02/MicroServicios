@@ -12,8 +12,21 @@ public class UsuarioServicio {
     @Autowired
     private UsuarioRepository usuarioRepo;
 
-    public List<Usuario> listarUsuarios(){
+    public List<Usuario> listarTodosUsuarios(){
         return usuarioRepo.findAll();
+    }
+
+    public Usuario crearUsuario(Usuario usuario){
+        return usuarioRepo.save(usuario);
+    }
+
+    public Usuario actualizarUsuario(int id, Usuario usuario){
+        usuario.setId(id);
+        return usuarioRepo.save(usuario);
+    }
+
+    public void borrarUsuario(int id){
+        usuarioRepo.deleteById(id);
     }
 
 }
